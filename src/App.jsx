@@ -65,7 +65,7 @@ function App() {
 						<h2 className='ml-5 sm:ml-0 font-semibold subpixel-antialiased text-sm md:text-1xl text-left  md:text-center mt-10 text-slate-600'>
 							Данный сервис перенаправляет по указанному номеру на веб-сайт 
 							<span className='text-green-600 ml-1'>WhatsApp</span>, обеспечивая удобный переход к
-							приложению для определенного пользователя.
+							приложению для определения пользователя.
 						</h2>
 					</div>
 				</div>
