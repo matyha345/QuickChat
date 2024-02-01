@@ -42,11 +42,11 @@ function App() {
 
 	return (
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center'>
-			<div className='mx-auto container max-w-screen-lg m-0-auto px-2'>
+			<div className='mx-auto container max-w-screen-lg m-0-auto px-2 box-border'>
 				<div className='flex'>
 					<div className=' bg-slate-300 py-5 px-10 rounded-xl shadow-2xl shadow-gray-600'>
 						<h1 className='font-bold text-lg sm:text-xl md:text-3xl text-center'>
-							QuickChat Search: Найди своих в <span className=' text-green-600'>WhatsApp</span>
+							QuickChat Search: Найди своих в <span className=' text-green-600 mr-1'>WhatsApp</span>
 							мгновенно.
 						</h1>
 
@@ -62,7 +62,7 @@ function App() {
 							<Button disabled={isButtonDisabled} type={'submit'}></Button>
 						</form>
 
-						<h2 className=' ml-6 sm:ml-0 text-balance font-semibold subpixel-antialiased text-sm md:text-base md:text-1xl text-left  sm:text-center mt-10 text-slate-600'>
+						<h2 className='ml-5 sm:ml-0 font-semibold subpixel-antialiased text-sm md:text-1xl text-left  md:text-center mt-10 text-slate-600'>
 							Данный сервис перенаправляет по указанному номеру на веб-сайт 
 							<span className='text-green-600 ml-1'>WhatsApp</span>, обеспечивая удобный переход к
 							приложению для определенного пользователя.
