@@ -41,8 +41,8 @@ function App() {
 	}, [inputValue])
 
 	return (
-		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center'>
-			<div className='mx-auto container max-w-screen-lg m-0-auto px-2 box-border'>
+		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-mono'>
+			<div className='mx-auto container max-w-screen-lg m-0-auto px-2r'>
 				<div className='flex'>
 					<div className=' bg-slate-300 py-5 px-10 rounded-xl shadow-2xl shadow-gray-600'>
 						<h1 className='font-bold text-lg sm:text-xl md:text-3xl text-center'>
