@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Field from './ui/feild/Feild'
 import Button from './ui/button/Button'
 
-function App() {
+const FormNumber = () => {
 	const [modifiedPhoneNumber, setModifiedPhoneNumber] = useState('')
 	const [isButtonDisabledWhatsApp, setIsButtonDisabledWhatsApp] = useState(true)
 	const [isButtonDisabledViber, setIsButtonDisabledViber] = useState(true)
@@ -49,7 +49,7 @@ function App() {
 				if (messenger === 'whatsApp') {
 					link = `https://wa.me/${modifiedPhoneNumber}`
 				} else if (messenger === 'viber') {
-					link = `viber://chat?number=+${modifiedPhoneNumber}`
+					link = `viber://chat?number=${modifiedPhoneNumber}`
 				}
 
 				if (link) {
@@ -62,6 +62,10 @@ function App() {
 		[modifiedPhoneNumber, reset, errors]
 	)
 
+	const changeTypeButtonWhatsApp = !isButtonDisabledWhatsApp ? 'submit' : 'button'
+	const changeTypeButtonViber = !isButtonDisabledViber ? 'submit' : 'button'
+
+
 	return (
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-sans px-5'>
 			<div className='mx-auto container max-w-screen-lg m-0-auto px-2r'>
@@ -72,7 +76,7 @@ function App() {
 							мгновенно.
 						</h1>
 
-						<form className='mt-5 relative' onSubmit={handleSubmit(onSubmit)}>
+						<form className='mt-5 relative' onSubmit={onSubmit}>
 							<div className='relative'>
 								<p className='text-lg font-bold text-whatsApp'>WhatsApp</p>
 								<Field
@@ -86,8 +90,8 @@ function App() {
 								/>
 								<Button
 									disabled={isButtonDisabledWhatsApp}
-									type={'submit'}
-									clickHandler={() => handleSubmit(onSubmit('whatsApp'))}
+									type={changeTypeButtonWhatsApp}
+									clickHandler={() => onSubmit('whatsApp')}
 								></Button>
 							</div>
 							<div className='relative'>
@@ -103,8 +107,8 @@ function App() {
 								/>
 								<Button
 									disabled={isButtonDisabledViber}
-									type={'submit'}
-									clickHandler={() => handleSubmit(onSubmit('viber'))}
+									type={changeTypeButtonViber}
+									clickHandler={() => onSubmit('viber')}
 								></Button>
 							</div>
 						</form>
@@ -121,4 +125,4 @@ function App() {
 	)
 }
 
-export default App
+export default FormNumber
