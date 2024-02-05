@@ -65,14 +65,14 @@ const FormNumber = () => {
 	const changeTypeButtonWhatsApp = !isButtonDisabledWhatsApp ? 'submit' : 'button'
 	const changeTypeButtonViber = !isButtonDisabledViber ? 'submit' : 'button'
 
-
 	return (
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-sans px-5'>
 			<div className='mx-auto container max-w-screen-lg m-0-auto px-2r'>
 				<div className='flex'>
 					<div className='bg-bgMain py-5 px-10 rounded-xl shadow-2xl shadow-gray-600'>
 						<h1 className='text-white font-bold text-lg sm:text-xl md:text-3xl text-center'>
-							QuickChat Search: Найди своих в <span className=' text-whatsApp mr-1'>WhatsApp</span>
+							QuickChat Search: Найди своих в <span className=' text-whatsApp mx-1'>WhatsApp</span>и{' '}
+							<span className='text-viber mx-1'>Viber</span>
 							мгновенно.
 						</h1>
 
@@ -115,7 +115,8 @@ const FormNumber = () => {
 
 						<h2 className='ml-5 sm:ml-0 font-semibold subpixel-antialiased text-sm md:text-1xl text-left  md:text-center mt-10 text-white/75'>
 							Данный сервис перенаправляет по указанному номеру на веб-сайт
-							<span className='text-whatsApp ml-1'>WhatsApp</span>, обеспечивая удобный переход к
+							<span className=' text-whatsApp mx-1'>WhatsApp</span>и
+							<span className='text-viber ml-1'>Viber</span>, обеспечивая удобный переход к
 							приложению для определения пользователя.
 						</h2>
 					</div>
