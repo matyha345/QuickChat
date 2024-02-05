@@ -9,6 +9,8 @@
 
 <p>Данный сервис перенаправляет по указанному номеру на веб-сайт <span style="color: green;" >WhatsApp</span>, обеспечивая удобный переход к приложению для определения пользователя. </p>
 
+ <img style="border-radius: 10px;" src="./public/img_search.png" alt="Alt img" width="280" height="auto">
+
 ![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=matyha345&theme=algolia)
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=matyha345)](https://github.com/matyha345/github-profile-trophy)
