@@ -4,20 +4,20 @@ import Field from './ui/feild/Feild'
 import Button from './ui/button/Button'
 
 function App() {
-	const {
-		register,
-		handleSubmit,
-		reset,
-		watch,
-		formState: { errors }
-	} = useForm({ shouldUnregister: false })
-
-	const inputValueWhatsApp = watch('whatsApp')
-	const inputValueViber = watch('viber')
-
 	const [modifiedPhoneNumber, setModifiedPhoneNumber] = useState('')
 	const [isButtonDisabledWhatsApp, setIsButtonDisabledWhatsApp] = useState(true)
 	const [isButtonDisabledViber, setIsButtonDisabledViber] = useState(true)
+
+	const {
+		register,
+		handleSubmit,
+		watch,
+		reset,
+		formState: { errors }
+	} = useForm({ shouldUnregister: false, mode: 'onChange' })
+
+	const inputValueWhatsApp = watch('whatsApp')
+	const inputValueViber = watch('viber')
 
 	useEffect(() => {
 		const enteredPhoneNumber = (inputValueWhatsApp || inputValueViber || '').replace(/[^\d]/g, '')
@@ -30,21 +30,6 @@ function App() {
 		setIsButtonDisabledViber(modifiedNumber < 1 || !inputValueViber)
 	}, [inputValueWhatsApp, inputValueViber])
 
-	const onSubmit = useCallback(
-		messenger => {
-			if (messenger === 'whatsApp') {
-				const whatsappLink = `https://wa.me/${modifiedPhoneNumber}`
-				window.open(whatsappLink, '_blank')
-			} else if (messenger === 'viber') {
-				const viberLink = `viber://chat?number=+${modifiedPhoneNumber}`
-				window.open(viberLink, '_blank')
-			}
-
-			reset()
-		},
-		[modifiedPhoneNumber, reset]
-	)
-
 	const phoneValidation = {
 		required: 'Введите номер телефона',
 		pattern: {
@@ -56,6 +41,26 @@ function App() {
 			message: 'Номер минимум 10 символов'
 		}
 	}
+
+	const onSubmit = useCallback(
+		messenger => {
+			if (!Object.keys(errors).length) {
+				let link = ''
+				if (messenger === 'whatsApp') {
+					link = `https://wa.me/${modifiedPhoneNumber}`
+				} else if (messenger === 'viber') {
+					link = `viber://chat?number=+${modifiedPhoneNumber}`
+				}
+
+				if (link) {
+					window.open(link, '_blank')
+				}
+
+				reset()
+			}
+		},
+		[modifiedPhoneNumber, reset, errors]
+	)
 
 	return (
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-sans px-5'>

@@ -1,4 +1,4 @@
-const Field = ({ register, name, options, error, customStylesClass, onKeyPress, ...rest }) => {
+const Field = ({ register, name, options, error, customStylesClass, ...rest }) => {
 	return (
 		<div className=' min-w-max relative oldstyle-nums'>
 			<input {...register(name, options)} {...rest} className={customStylesClass} />
