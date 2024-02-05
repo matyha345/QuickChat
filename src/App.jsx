@@ -13,12 +13,20 @@ function App() {
 	} = useForm()
 
 	const inputValue = watch('phone')
+
 	const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+	const [modifiedPhoneNumber, setModifiedPhoneNumber] = useState('')
 
-	const onSubmit = data => {
-		const enteredPhoneNumber = data.phone.replace(/[^\d]/g, '')
+	useEffect(() => {
+		const enteredPhoneNumber = (inputValue || '').replace(/[^\d]/g, '')
+		const modifiedNumber = enteredPhoneNumber.replace(/8/g, '+7')
 
-		const whatsappLink = `https://wa.me/${enteredPhoneNumber}`
+		setModifiedPhoneNumber(modifiedNumber)
+		setIsButtonDisabled(modifiedNumber < 1)
+	}, [inputValue])
+
+	const onSubmit = () => {
+		const whatsappLink = `https://wa.me/${modifiedPhoneNumber}`
 		window.open(whatsappLink, '_blank')
 
 		reset()
@@ -35,10 +43,6 @@ function App() {
 			message: 'Номер минимум 10 символов'
 		}
 	}
-
-	useEffect(() => {
-		setIsButtonDisabled(inputValue < 1)
-	}, [inputValue])
 
 	return (
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-sans px-5'>
@@ -63,7 +67,7 @@ function App() {
 						</form>
 
 						<h2 className='ml-5 sm:ml-0 font-semibold subpixel-antialiased text-sm md:text-1xl text-left  md:text-center mt-10 text-slate-600'>
-							Данный сервис перенаправляет по указанному номеру на веб-сайт 
+							Данный сервис перенаправляет по указанному номеру на веб-сайт
 							<span className='text-green-600 ml-1'>WhatsApp</span>, обеспечивая удобный переход к
 							приложению для определения пользователя.
 						</h2>
