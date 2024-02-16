@@ -69,8 +69,8 @@ const FormNumber = () => {
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-sans px-5'>
 			<div className='mx-auto container max-w-screen-lg m-0-auto px-2r'>
 				<div className='flex'>
-					<div className='bg-bgMain py-5 px-10 rounded-xl shadow-2xl shadow-gray-600'>
-						<h1 className='text-white font-bold text-lg sm:text-xl md:text-3xl text-center'>
+					<div className='bg-bgMain py-5 px-3 md:px-10 rounded-xl shadow-2xl shadow-gray-600'>
+						<h1 className='text-white font-bold md:text-lg sm:text-xl md:text-3xl text-center'>
 							QuickChat Search: Найди своих в <span className=' text-whatsApp mx-1'>WhatsApp</span>и{' '}
 							<span className='text-viber mx-1'>Viber</span>
 							мгновенно.
@@ -78,7 +78,7 @@ const FormNumber = () => {
 
 						<form className='mt-5 relative' onSubmit={onSubmit}>
 							<div className='relative'>
-								<p className='text-lg font-bold text-whatsApp'>WhatsApp</p>
+								<p className='md:text-lg font-bold text-whatsApp'>WhatsApp</p>
 								<Field
 									customStylesClass='bg-white/80 w-full px-6 py-6 md:py-4 rounded-xl focus:border-blue-600 placeholder:text-slate-500 tracking-wide mt-1'
 									error={errors?.whatsApp?.message}
@@ -95,7 +95,7 @@ const FormNumber = () => {
 								></Button>
 							</div>
 							<div className='relative'>
-								<p className='text-lg font-bold text-viber mt-5'>Viber</p>
+								<p className='md:text-lg font-bold text-viber mt-5'>Viber</p>
 								<Field
 									customStylesClass='bg-white/80 w-full px-6 py-6 md:py-4 rounded-xl focus:border-blue-600 placeholder:text-slate-500 tracking-wide mt-1'
 									error={errors?.viber?.message}
@@ -113,7 +113,7 @@ const FormNumber = () => {
 							</div>
 						</form>
 
-						<h2 className='ml-5 sm:ml-0 font-semibold subpixel-antialiased text-sm md:text-1xl text-left  md:text-center mt-10 text-white/75'>
+						<h2 className='font-semibold subpixel-antialiased text-xs md:text-1xl text-left  md:text-center mt-10 text-white/75'>
 							Данный сервис перенаправляет по указанному номеру на веб-сайт
 							<span className=' text-whatsApp mx-1'>WhatsApp</span>и
 							<span className='text-viber ml-1'>Viber</span>, обеспечивая удобный переход к
