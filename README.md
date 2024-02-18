@@ -7,6 +7,8 @@
 
 <h1> QuickChat Search: Найди своих в <span style="color: green;" >WhatsApp</span>  мгновенно. </h1>
 
+<a href="http://quickchatwhatsapp.ru/">Ссылка на сайт</a>
+
 <p>Данный сервис перенаправляет по указанному номеру на веб-сайт <span style="color: green;" >WhatsApp</span>, обеспечивая удобный переход к приложению для определения пользователя. </p>
 
 <div style="border-radius: 10px; overflow: hidden;">
