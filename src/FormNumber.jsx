@@ -71,7 +71,7 @@ const FormNumber = () => {
 				<div className='flex'>
 					<div className='bg-bgMain py-5 px-3 md:px-10 rounded-xl shadow-2xl shadow-gray-600'>
 						<h1 className='text-white font-bold md:text-lg sm:text-xl text-center'>
-							Отыскать своих друзей и контакты в{' '}
+							Отыскать новые контакты в{' '}
 							<span className='text-whatsApp mx-1'>WhatsApp</span>и{' '}
 							<span className='text-viber mx-1'>Viber</span>
 							cтало проще простого с QuickChat Search.
