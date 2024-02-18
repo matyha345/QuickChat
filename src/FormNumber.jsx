@@ -79,10 +79,7 @@ const FormNumber = () => {
 
 						<form
 							className='mt-5 relative'
-							onSubmit={event => {
-								event.preventDefault()
-								onSubmit
-							}}
+							onSubmit={onSubmit}
 						>
 							<div className='relative'>
 								<p className='md:text-lg font-bold text-whatsApp'>WhatsApp</p>
