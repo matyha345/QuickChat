@@ -21,7 +21,7 @@ const FormNumber = () => {
 
 	useEffect(() => {
 		const enteredPhoneNumber = (inputValueWhatsApp || inputValueViber || '').replace(/[^\d]/g, '')
-		const modifiedNumber = enteredPhoneNumber.replace(/8/g, '+7')
+		const modifiedNumber = enteredPhoneNumber.replace(/8/g, '7')
 
 		setModifiedPhoneNumber(modifiedNumber)
 
