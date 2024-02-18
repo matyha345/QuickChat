@@ -21,7 +21,7 @@ const FormNumber = () => {
 
 	useEffect(() => {
 		const enteredPhoneNumber = (inputValueWhatsApp || inputValueViber || '').replace(/[^\d]/g, '')
-		const modifiedNumber = enteredPhoneNumber.replace(/8/g, '7')
+		const modifiedNumber = enteredPhoneNumber.replace(/^8/, '7')
 
 		setModifiedPhoneNumber(modifiedNumber)
 
@@ -53,13 +53,14 @@ const FormNumber = () => {
 				}
 
 				if (link) {
+					console.log('Отправленный номер:', modifiedPhoneNumber) // Выводим
 					window.open(link, '_blank')
 				}
 
 				reset()
 			}
 		},
-		[modifiedPhoneNumber, reset, errors]
+		[modifiedPhoneNumber, errors]
 	)
 
 	const changeTypeButtonWhatsApp = !isButtonDisabledWhatsApp ? 'submit' : 'button'
@@ -71,13 +72,18 @@ const FormNumber = () => {
 				<div className='flex'>
 					<div className='bg-bgMain py-5 px-3 md:px-10 rounded-xl shadow-2xl shadow-gray-600'>
 						<h1 className='text-white font-bold md:text-lg sm:text-xl text-center'>
-							Отыскать новые контакты в{' '}
-							<span className='text-whatsApp mx-1'>WhatsApp</span>и{' '}
+							Отыскать новые контакты в <span className='text-whatsApp mx-1'>WhatsApp</span>и{' '}
 							<span className='text-viber mx-1'>Viber</span>
 							cтало проще простого с QuickChat Search.
 						</h1>
 
-						<form className='mt-5 relative' onSubmit={onSubmit}>
+						<form
+							className='mt-5 relative'
+							onSubmit={event => {
+								event.preventDefault()
+								onSubmit
+							}}
+						>
 							<div className='relative'>
 								<p className='md:text-lg font-bold text-whatsApp'>WhatsApp</p>
 								<Field
@@ -87,7 +93,7 @@ const FormNumber = () => {
 									register={register}
 									options={phoneValidation}
 									type={'tel'}
-									placeholder='+7 999 999 99 99'
+									placeholder='Номер телефона'
 								/>
 								<Button
 									disabled={isButtonDisabledWhatsApp}
@@ -104,7 +110,7 @@ const FormNumber = () => {
 									register={register}
 									options={phoneValidation}
 									type={'tel'}
-									placeholder='+7 999 999 99 99'
+									placeholder='Номер телефона'
 								/>
 								<Button
 									disabled={isButtonDisabledViber}
