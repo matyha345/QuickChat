@@ -70,10 +70,11 @@ const FormNumber = () => {
 			<div className='mx-auto container max-w-screen-lg m-0-auto px-2r'>
 				<div className='flex'>
 					<div className='bg-bgMain py-5 px-3 md:px-10 rounded-xl shadow-2xl shadow-gray-600'>
-						<h1 className='text-white font-bold md:text-lg sm:text-xl md:text-3xl text-center'>
-							QuickChat Search: Найди своих в <span className=' text-whatsApp mx-1'>WhatsApp</span>и{' '}
+						<h1 className='text-white font-bold md:text-lg sm:text-xl text-center'>
+							Отыскать своих друзей и контакты в{' '}
+							<span className='text-whatsApp mx-1'>WhatsApp</span>и{' '}
 							<span className='text-viber mx-1'>Viber</span>
-							мгновенно.
+							cтало проще простого с QuickChat Search.
 						</h1>
 
 						<form className='mt-5 relative' onSubmit={onSubmit}>
@@ -113,12 +114,17 @@ const FormNumber = () => {
 							</div>
 						</form>
 
-						<h2 className='font-semibold subpixel-antialiased text-xs md:text-1xl text-left  md:text-center mt-10 text-white/75'>
-							Данный сервис перенаправляет по указанному номеру на веб-сайт
-							<span className=' text-whatsApp mx-1'>WhatsApp</span>и
-							<span className='text-viber ml-1'>Viber</span>, обеспечивая удобный переход к
-							приложению для определения пользователя.
+						<h2 className='font-semibold subpixel-antialiased text-sm md:text-1xl text-left md:text-center mt-10 text-white/75'>
+							Наш сервис мгновенно перенаправляет вас по указанному номеру на веб-страницы
+							<span className=' text-whatsApp mx-1'>WhatsApp</span> и
+							<span className='text-viber ml-1'>Viber</span>, обеспечивая мгновенный доступ к
+							приложениям без лишних телодвижений.
 						</h2>
+						<p className=' mt-3 md:text-center text-white/75 text-xs font-semibold subpixel-antialiased'>
+							Больше не нужно тратить время на поиск и добавление новых контактов в телефоне –
+							QuickChat Search делает весь процесс быстрым и удобным. Просто введите номер и
+							наслаждайтесь связью в считанные мгновения!
+						</p>
 					</div>
 				</div>
 			</div>
