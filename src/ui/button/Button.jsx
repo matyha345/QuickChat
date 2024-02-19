@@ -1,14 +1,13 @@
 const Button = ({ type, disabled, clickHandler = null }) => {
-	
-	const handleKeyDown = (event) => {
+	const handleKeyDown = event => {
 		if (event.key === 'Enter' && clickHandler) {
-		  clickHandler();
+			clickHandler()
 		}
-	  };
+	}
 	return (
 		<>
 			<button
-				className='absolute bg-black md:bottom-3.5 md:right-3 right-2 disabled:opacity-10 disabled:text-gray-400 enabled:bg-black text-white p-0.5 border border-black rounded-lg  transition-colors bottom-4'
+				className='absolute bg-black bottom-3 md:bottom-5 md:right-3 right-2 disabled:opacity-10 disabled:text-gray-400 enabled:bg-black text-white p-0.5 border border-black rounded-lg  transition-colors'
 				onClick={clickHandler}
 				onKeyDown={handleKeyDown}
 				disabled={disabled}
