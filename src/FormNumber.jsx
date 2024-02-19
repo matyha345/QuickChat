@@ -20,11 +20,11 @@ const FormNumber = () => {
 
 	return (
 		<section className='w-full h-dvh bg-slate-400 flex items-center justify-center font-sans px-5'>
-			<div className='mx-auto container max-w-screen-lg m-0-auto px-2r'>
+			<div className='mx-auto container max-w-screen-lg'>
 				<div className='flex'>
 					<div className='bg-bgMain py-5 px-3 md:px-10 rounded-xl shadow-2xl shadow-gray-600 relative'>
 						<button
-							className='absolute top-[-53px] right-[10px] bg-bgMain w-20 h-10 rounded-3xl flex items-center justify-center text-white hover:opacity-90  active:opacity-70'
+							className='absolute top-[-45px] sm:top-[-53px] right-[10px] bg-bgMain w-20 h-10 rounded-3xl flex items-center justify-center text-white hover:opacity-90  active:opacity-70'
 							onClick={toggleLanguage}
 						>
 							<img src='/language.svg' alt='Language image' />
