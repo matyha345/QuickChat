@@ -1,0 +1,11 @@
+{
+	"main": {
+		"titleH1": "Finding new contacts in  <span class=\"text-whatsApp\">WhatsApp</span> and <span class=\"text-viber\">Viber</span> is easier than ever with QuickChat Search.",
+		"titleH2": "Our service instantly redirects you to web pages of <span class=\"text-whatsApp\">WhatsApp</span> and <span class=\"text-viber\">Viber</span>, using the specified phone number, providing instant access to the applications without unnecessary hassle.",
+		"text": "No longer need to spend time searching and adding new contacts in your phone - QuickChat Search makes the whole process quick and convenient. Simply enter the number and enjoy instant communication!",
+		"placeholder": "Phone number",
+		"required": "Enter phone number",
+		"patternMessage": "Phone number must contain only digits",
+		"minLengthMessage": "Number must be at least 10 characters long"
+	}
+}
