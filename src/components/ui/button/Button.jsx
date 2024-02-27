@@ -1,4 +1,8 @@
-const Button = ({ clickHandler, customStyles }) => {
-	return <button onClick={clickHandler} className={customStyles}></button>
+const Button = ({ clickHandler, customStyles, children }) => {
+	return (
+		<button onClick={clickHandler} className={customStyles}>
+			{children}
+		</button>
+	)
 }
 export default Button
