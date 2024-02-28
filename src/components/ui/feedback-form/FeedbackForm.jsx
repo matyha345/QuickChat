@@ -1,139 +1,121 @@
-import { PhotoIcon } from '@heroicons/react/24/solid'
-import { useForm } from 'react-hook-form'
-import { FaCaretRight } from 'react-icons/fa6'
 import cn from 'clsx'
-import { sendToTelegram } from '../../services/sendToTelegram'
-import { useMutation } from '@tanstack/react-query'
+import { IoIosCloseCircleOutline } from 'react-icons/io'
+import { useFeedBackForm } from './hooks/useFeedBackForm'
+import FeedbackFormFields from './feedback-form-fields/FeedbackFormFields'
+import Button from '../button/Button'
+import Alert from '../alert/Alert'
+import { useEffect } from 'react'
 
 const FeedBackForm = ({ isActiveFeedback, setIsActiveFeedback }) => {
 	const {
-		register,
-		reset,
+		remainingTime,
+		setRemainingTime,
+		lastSubmissionTime,
+		setLastSubmissionTime,
+		t,
 		handleSubmit,
-		formState: { errors }
-	} = useForm()
+		mutation,
+		register,
+		errors,
+		reset
+	} = useFeedBackForm()
+
+	useEffect(() => {
+		let timer
+		if (lastSubmissionTime) {
+			const currentTime = Date.now()
+			const elapsedTime = currentTime - lastSubmissionTime
+			const remaining = Math.max(0, 60000 - elapsedTime) // Оставшееся время в миллисекундах
+			setRemainingTime(remaining)
+			timer = setInterval(() => {
+				setRemainingTime(prevTime => Math.max(0, prevTime - 1000)) // Обновляем оставшееся время каждую секунду
+			}, 1000)
+		}
+		return () => clearInterval(timer) // Очищаем интервал при размонтировании компонента
+	}, [lastSubmissionTime])
 
 	const onSubmit = async data => {
-		try {
-			await sendToTelegram(data)
-			reset()
-		} catch (error) {
-			console.error('Ошибка при отправке данных на Telegram:', error)
+		const currentTime = Date.now()
+		if (lastSubmissionTime && currentTime - lastSubmissionTime < 60000) {
+			return
 		}
+		setLastSubmissionTime(currentTime)
+		await mutation.mutateAsync(data)
 	}
 
 	return (
 		<div className='relative'>
-			<FaCaretRight
+			{mutation.isSuccess && (
+				<Alert
+					customStyles={{
+						position: 'absolute',
+						top: '-2%',
+						left: '0'
+					}}
+					type='success'
+					text={t('feedback.alertIsSuccess')}
+				/>
+			)}
+
+			{mutation.isError && (
+				<Alert
+					customStyles={{
+						position: 'absolute',
+						bottom: '5%',
+						left: '0',
+						width: '280px'
+					}}
+					type='error'
+					text={t('feedback.alertIsError')}
+				/>
+			)}
+
+			<IoIosCloseCircleOutline
 				onClick={() => setIsActiveFeedback(!isActiveFeedback)}
-				fontSize={40}
-				className={cn('absolute top-1/2 -left-20 cursor-pointer hover:opacity-60', {
+				fontSize={28}
+				className={cn('absolute -top-5  right-0 cursor-pointer hover:opacity-60 ', {
 					'animate-fade': isActiveFeedback,
 					hidden: !isActiveFeedback
 				})}
 			/>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className='space-y-12'>
-					<div className='border-b border-white/10 pb-12'>
-						<h2 className='text-base font-semibold leading-7 text-white'>Форма обратной связи</h2>
-						<p className='mt-1 text-sm leading-6 text-gray-400'>
-							Эта информация будет отображаться публично, так что будьте осторожны с тем, чем вы
-							делитесь.
-						</p>
-
-						<div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
-							<div className='sm:col-span-4'>
-								<label
-									htmlFor='username'
-									className='block text-sm font-medium leading-6 text-white'
-								>
-									Ваше Имя
-								</label>
-								<div className='mt-2'>
-									<div className='flex rounded-md bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'>
-										<input
-											{...register('username')}
-											type='text'
-											name='username'
-											id='username'
-											autoComplete='username'
-											className='flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6'
-											placeholder='Ваше Имя'
-										/>
-									</div>
-								</div>
-							</div>
-
-							<div className='col-span-full'>
-								<label htmlFor='about' className='block text-sm font-medium leading-6 text-white'>
-									О
-								</label>
-								<div className='mt-2'>
-									<textarea
-										{...register('about')}
-										placeholder='About you'
-										id='about'
-										name='about'
-										rows={3}
-										className='block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-										defaultValue={''}
-									/>
-								</div>
-								<p className='mt-3 text-sm leading-6 text-gray-400'>
-									Напишите ваше предложение или отзыв
-								</p>
-							</div>
-
-							<div className='col-span-full'>
-								<label
-									htmlFor='cover-photo'
-									className='block text-sm font-medium leading-6 text-white'
-								>
-									Cover photo
-								</label>
-								<div className='mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-4 py-6'>
-									<div className='text-center'>
-										<PhotoIcon className='mx-auto h-12 w-12 text-gray-500' aria-hidden='true' />
-										<div className='mt-4 flex text-sm leading-6 text-gray-400'>
-											<label
-												htmlFor='file-upload'
-												className='relative cursor-pointer rounded-md bg-gray-900 font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500'
-											>
-												<span>Upload a file</span>
-												<input
-													id='file-upload'
-													name='file-upload'
-													type='file'
-													className='sr-only'
-												/>
-											</label>
-											<p className='pl-1'>or drag and drop</p>
-										</div>
-										<p className='text-xs leading-5 text-gray-400'>PNG, JPG, GIF up to 10MB</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<FeedbackFormFields t={t} register={register} errors={errors} />
 				</div>
 
 				<div className='mt-6 flex items-center justify-end gap-x-6'>
-					<button
-						onClick={() => reset()}
+					<Button
+						clickHandler={() => reset()}
 						type='button'
-						className='text-sm font-semibold leading-6 text-white'
+						customStyles={'text-sm font-semibold leading-6 text-white hover:opacity-60'}
 					>
-						Сбросить
-					</button>
-					<button
+						{t('feedback.buttonDrop')}
+					</Button>
+					<Button
 						type='submit'
-						onClick={() => handleSubmit}
-						className='rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+						clickHandler={() => handleSubmit}
+						disabled={mutation.isPending}
+						customStyles={cn(
+							'rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500',
+							{
+								'flex justify-center w-24': mutation.isPending
+							},
+							{
+								'opacity-10 cursor-no-drop': remainingTime
+							}
+						)}
 					>
-						Оправить
-					</button>
+						{mutation.isPending ? <div className='loader'></div> : t('feedback.buttonSubmit')}
+					</Button>
 				</div>
 			</form>
+
+			{remainingTime > 0 && (
+				<p className='mt-5 animate-fade text-sm text-slate-400'>
+					{t('feedback.pleaseWait')}{' '}
+					<span className='text-blue-400'>{Math.ceil(remainingTime / 1000)}</span>
+				</p>
+			)}
 		</div>
 	)
 }

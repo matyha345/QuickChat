@@ -1,6 +1,8 @@
-const Button = ({ clickHandler, customStyles, children }) => {
+
+
+const Button = ({ clickHandler, customStyles, children, type, disabled }) => {
 	return (
-		<button onClick={clickHandler} className={customStyles}>
+		<button onClick={clickHandler} className={customStyles} type={type} disabled={disabled}>
 			{children}
 		</button>
 	)

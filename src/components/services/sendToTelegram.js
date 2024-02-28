@@ -6,14 +6,14 @@ const $API = `https://api.telegram.org/bot${$TELEGRAM_BOT_TOKEN}/sendMessage`
 
 export const sendToTelegram = async formData => {
 
-
 	const message = `
-		! ==== !
-		\nНовый Отзыв или баг:
-		<pre>
-			\n<b>Имя:</b> ${formData.username}
-			\nТекст: ${formData.about}
-		</pre>
+    *🌟 Новый отзыв 🐞*
+
+		*Имя:* *${formData.username}*
+
+		*Текст:* ${formData.about}
+
+		_________________________
 	`
 
 	const response = await axios.post(
@@ -21,7 +21,7 @@ export const sendToTelegram = async formData => {
 		{
 			chat_id: $TELEGRAM_CHAT_ID,
 			text: message,
-			parse_mode: 'HTML'
+			parse_mode: 'markdown'
 		},
 		{
 			headers: {
@@ -29,6 +29,4 @@ export const sendToTelegram = async formData => {
 			}
 		}
 	)
-
-	console.log('Ответ от Telegram:', response.data)
 }

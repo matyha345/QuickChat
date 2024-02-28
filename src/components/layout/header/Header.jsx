@@ -4,17 +4,17 @@ const Header = () => {
 	const { toggleLanguage, locales, isActiveLanguage } = useFormNumber()
 
 	return (
-		<div className='flex items-center justify-between relative pt-3 md:px-20 '>
-			<a className='font-semibold text-2xl' href='/'>
+		<div className='relative flex items-center justify-between pt-3 md:px-20 '>
+			<a className='text-2xl font-semibold' href='/'>
 				QuickChat Search
 			</a>
 
 			<button
-				className='border border-white w-20 h-10 rounded-3xl flex items-center justify-center text-white hover:opacity-90 active:opacity-70'
+				className='flex h-10 w-20 items-center justify-center rounded-3xl border border-white text-white hover:opacity-90 active:opacity-70'
 				onClick={toggleLanguage}
 			>
 				<img src='/language.svg' alt='Language image' />
-				<span className='w-10 font-semibold text-base'>{locales[isActiveLanguage].title}</span>
+				<span className='w-10 text-base font-semibold'>{locales[isActiveLanguage].title}</span>
 			</button>
 		</div>
 	)

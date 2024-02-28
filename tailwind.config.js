@@ -21,11 +21,24 @@ export default {
         to: {
           opacity: 0
         }
+      },
+      opacityFluctuate: {
+        '0%': {
+          opacity: 1
+        },
+        '50%': {
+          opacity: 0.5
+        },
+        '100%': {
+          opacity: 1
+        }
       }
+
     },
     animation: {
       fade: 'fadeIn 1s ease-in-out',
-      fadeOn: "fadeOn 1s ease-in-out"
+      fadeOn: "fadeOn 1s ease-in-out",
+      opacityBreathe: 'opacityFluctuate 3s ease-in-out infinite'
     },
     extend: {
       backgroundColor: {
