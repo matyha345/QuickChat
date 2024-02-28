@@ -17,6 +17,8 @@ export const useFormNumber = () => {
         formState: { errors }
     } = useForm({ shouldUnregister: false, mode: 'onChange' })
 
+    const { t, i18n } = useTranslation()
+
     const inputValueWhatsApp = watch('whatsApp')
     const inputValueViber = watch('viber')
 
@@ -38,8 +40,6 @@ export const useFormNumber = () => {
         ru: { title: 'Рус' },
         en: { title: 'En' }
     }
-
-    const { t, i18n } = useTranslation()
 
     const toggleLanguage = () => {
         const newLanguage = isActiveLanguage === 'ru' ? 'en' : 'ru'
