@@ -7,5 +7,21 @@
 		"required": "Enter phone number",
 		"patternMessage": "Phone number must contain only digits",
 		"minLengthMessage": "Number must be at least 10 characters long"
+	},
+	"feedback": {
+		"buttonDrop": "Cancel",
+		"buttonSubmit": "Send",
+		"alertIsSuccess": "Sent",
+		"alertIsError": "Error sending data",
+		"pleaseWait": "Please wait...",
+		"fedBack": "Feedback Form",
+		"title": "This information will be displayed publicly, so please be careful about what you share.",
+		"name": "Your name",
+		"opinionComment": "Please share your opinion / comment.",
+		"message": "Your message",
+		"required": "This field is required.",
+		"requiredMinLength": "Minimum character count: 20",
+		"requiredMaxLength": "Maximum character count: 400",
+		"requiredValue": "Incorrect value"
 	}
 }

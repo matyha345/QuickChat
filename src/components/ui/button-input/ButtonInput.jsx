@@ -7,7 +7,7 @@ const ButtonInput = ({ type, disabled, clickHandler = null }) => {
 	return (
 		<>
 			<button
-				className='absolute bg-transparent bottom-3 md:bottom-5 md:right-3 right-2 disabled:opacity-50 disabled:text-gray-400 enabled:bg-white text-white p-0.5 border border-black/80 rounded-lg  transition-colors'
+				className='absolute bottom-3 right-2 rounded-lg border border-black/80 bg-transparent p-0.5 text-white transition-colors enabled:bg-white disabled:text-gray-400 disabled:opacity-50 md:bottom-5  md:right-3'
 				onClick={clickHandler}
 				onKeyDown={handleKeyDown}
 				disabled={disabled}
