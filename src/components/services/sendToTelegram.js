@@ -12,8 +12,8 @@ export const sendToTelegram = async formData => {
 		*Имя:* *${formData.username}*
 
 		*Текст:* ${formData.about}
-
-		_________________________
+	
+	*🌟 Конец 🌟*
 	`
 
 	const response = await axios.post(
