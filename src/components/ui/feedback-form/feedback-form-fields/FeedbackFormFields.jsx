@@ -18,7 +18,7 @@ const FeedbackFormFields = ({ t, register, errors }) => {
 								id='username'
 								autoComplete='username'
 								className='flex-1 border-0 bg-transparent px-2 py-2.5  text-white outline-none focus:ring-0 sm:text-sm sm:leading-6'
-								placeholder='Ваше Имя'
+								placeholder={t('feedback.name')}
 							/>
 							{errors.username && (
 								<div className='absolute right-0 top-full mt-2 text-sm text-slate-400'>
