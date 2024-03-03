@@ -11,11 +11,15 @@
 
 <p>Данный сервис перенаправляет по указанному номеру на веб-сайт <span style="color: green;" >WhatsApp</span>, обеспечивая удобный переход к приложению для определения пользователя. </p>
 
-<div style="border-radius: 10px; overflow: hidden;">
-  <img src="./public/img_search.png" alt="Alt img" style="border-radius: 10px;" width="280" height="auto">
+<hr>
+
+
+<div align="center" style="border-radius: 10px; overflow: hidden;">
+
+  <img src="./public/img_search_one.jpeg" alt="Alt img" style="border-radius: 10px;" width="280" height="auto">
+  <img src="./public/img_search_two.jpeg" alt="Alt img" style="border-radius: 10px;" width="280" height="auto">
+<hr>
+<img src="./public/img_search_three.jpeg" alt="Alt img" style="border-radius: 10px;" width="280" height="auto"> 
+<img src="./public/img_search_for.jpeg" alt="Alt img" style="border-radius: 10px;" width="280" height="auto">
+
 </div>
-
-
-![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=matyha345&theme=algolia)
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=matyha345)](https://github.com/matyha345/github-profile-trophy)
