@@ -13,6 +13,7 @@ const Home = () => {
 
 	return (
 		<Layout isActiveFeedback={isActiveFeedback}>
+
 			<div className='flex flex-col items-center px-3 py-5 md:mt-20 md:px-10'>
 				<h1 className='text-center font-bold text-white/65 sm:text-xl md:text-lg'>
 					<span dangerouslySetInnerHTML={{ __html: t('main.titleH1') }} />

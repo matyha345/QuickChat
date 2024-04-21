@@ -5,9 +5,11 @@ import FeedbackFormFields from './feedback-form-fields/FeedbackFormFields'
 import Button from '../button/Button'
 import Alert from '../alert/Alert'
 import { useEffect } from 'react'
+import { LiaDonateSolid } from "react-icons/lia";
 
 const FeedBackForm = ({ isActiveFeedback, setIsActiveFeedback }) => {
 	const {
+		nav,
 		remainingTime,
 		setRemainingTime,
 		lastSubmissionTime,
@@ -116,6 +118,10 @@ const FeedBackForm = ({ isActiveFeedback, setIsActiveFeedback }) => {
 					<span className='text-blue-400'>{Math.ceil(remainingTime / 1000)}</span>
 				</p>
 			)}
+
+			<Button clickHandler={() => nav('/donate')}>
+				<LiaDonateSolid size={55} className='text-slate-400' />
+			</Button>
 		</div>
 	)
 }

@@ -1,5 +1,4 @@
 import { useFormNumber } from '../../hooks/useFormNumber'
-
 const Header = () => {
 	const { toggleLanguage, locales, isActiveLanguage } = useFormNumber()
 
@@ -8,6 +7,10 @@ const Header = () => {
 			<a className='text-2xl font-semibold' href='/'>
 				QuickChat Search
 			</a>
+
+		
+
+
 
 			<button
 				className='flex h-10 w-20 items-center justify-center rounded-3xl border border-white text-white hover:opacity-90 active:opacity-70'
